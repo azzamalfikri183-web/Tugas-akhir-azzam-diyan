@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tapak Suci Ponpes Karangasem Paciran</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        tsRed: '#CC0000',
+                        tsYellow: '#FFCC00',
+                        tsDark: '#1A1A1A',
+                        tsBg: '#F8FAF9'
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-tsBg text-gray-800 antialiased flex flex-col min-h-screen">
+
+    <!-- HEADER / NAVIGATION BAR -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo & Brand Name -->
+                <a href="#beranda" class="flex items-center space-x-3 group">
+                    <div class="w-12 h-12 bg-tsRed rounded-xl flex items-center justify-center p-1.5 shadow-md shadow-red-200 group-hover:scale-105 transition-transform">
+                        <img src="images.jpg" alt="Logo Tapak Suci" class="w-full h-full object-contain rounded-lg">
+                    </div>
+                    <div>
+                        <span class="block text-lg font-extrabold text-gray-900 leading-tight">TAPAK SUCI</span>
+                        <span class="block text-xs font-semibold text-tsRed tracking-wide">PONPES KARANGASEM PACIRAN</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden md:flex items-center space-x-1 lg:space-x-2">
+                    <a href="#beranda" class="px-3 py-2 text-sm font-semibold text-gray-700 hover:text-tsRed hover:bg-red-50 rounded-lg transition-colors">
+                        <i class="fa-solid fa-house text-tsRed mr-1.5"></i> Beranda
+                    </a>
+                    <a href="#profil" class="px-3 py-2 text-sm font-semibold text-gray-700 hover:text-tsRed hover:bg-red-50 rounded-lg transition-colors">
+                        <i class="fa-solid fa-book-open text-tsRed mr-1.5"></i> Profil
+                    </a>
+                    <a href="#program" class="px-3 py-2 text-sm font-semibold text-gray-700 hover:text-tsRed hover:bg-red-50 rounded-lg transition-colors">
+                        <i class="fa-solid fa-calendar-check text-tsRed mr-1.5"></i> Program
+                    </a>
+                    <a href="#berita" class="px-3 py-2 text-sm font-semibold text-gray-700 hover:text-tsRed hover:bg-red-50 rounded-lg transition-colors">
+                        <i class="fa-solid fa-newspaper text-tsRed mr-1.5"></i> Berita & Galeri
+                    </a>
+                    <a href="#kontak" class="px-3 py-2 text-sm font-semibold text-gray-700 hover:text-tsRed hover:bg-red-50 rounded-lg transition-colors">
+                        <i class="fa-solid fa-location-dot text-tsRed mr-1.5"></i> Kontak
+                    </a>
+                </nav>
+
+                <!-- CTA WhatsApp Desktop -->
+                <div class="hidden md:block">
+                    <a href="https://wa.me/6285808437307?text=Halo%20Tapak%20Suci%20Ponpes%20Karangasem,%20saya%20ingin%20bertanya%20informasi" 
+                       target="_blank" 
+                       class="inline-flex items-center space-x-2 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-sm px-4 py-2.5 rounded-xl shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5">
+                        <i class="fa-brands fa-whatsapp text-lg"></i>
+                        <span>Hubungi WA</span>
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="p-2 rounded-lg text-gray-600 hover:text-gray-900 hover:bg-gray-100 focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 px-4 pt-2 pb-4 space-y-1 shadow-lg">
+            <a href="#beranda" class="block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:bg-red-50 hover:text-tsRed">
+                <i class="fa-solid fa-house text-tsRed w-6"></i> Beranda
+            </a>
+            <a href="#profil" class="block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:bg-red-50 hover:text-tsRed">
+                <i class="fa-solid fa-book-open text-tsRed w-6"></i> Profil
+            </a>
+            <a href="#program" class="block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:bg-red-50 hover:text-tsRed">
+                <i class="fa-solid fa-calendar-check text-tsRed w-6"></i> Program
+            </a>
+            <a href="#berita" class="block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:bg-red-50 hover:text-tsRed">
+                <i class="fa-solid fa-newspaper text-tsRed w-6"></i> Berita & Galeri
+            </a>
+            <a href="#kontak" class="block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:bg-red-50 hover:text-tsRed">
+                <i class="fa-solid fa-location-dot text-tsRed w-6"></i> Kontak & Peta
+            </a>
+            <a href="https://wa.me/6285808437307?text=Halo%20Tapak%20Suci%20Ponpes%20Karangasem,%20saya%20ingin%20bertanya" 
+               target="_blank" 
+               class="mt-3 block w-full text-center bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2.5 rounded-xl">
+                <i class="fa-brands fa-whatsapp text-lg mr-2"></i> WhatsApp: 085808437307
+            </a>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-grow">
+
+        <!-- 1. BERANDA (HERO SECTION) -->
+        <section id="beranda" class="relative bg-gradient-to-br from-red-900 via-tsRed to-red-800 text-white py-16 lg:py-24 overflow-hidden">
+            <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]"></div>
+            <img src="images (3).jpg" alt="" aria-hidden="true" class="pointer-events-none absolute bottom-0 right-0 z-0 w-72 opacity-20 mix-blend-multiply object-contain sm:w-96 lg:right-16 lg:w-[32rem]">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    
+                    <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                        <div class="inline-flex items-center space-x-2 bg-yellow-400/20 backdrop-blur-sm border border-yellow-400/40 px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-semibold text-yellow-300">
+                            <i class="fa-solid fa-shield-halved"></i>
+                            <span>Tapak Suci Ponpes Karangasem</span>
+                        </div>
+                        <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-tight">
+                            Dengan Iman Dan Akhlak <br class="hidden sm:inline">Saya Menjadi Kuat!
+                        </h1>
+                        <p class="text-base sm:text-lg text-red-100 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                            Mencetak kader persyarikatan yang tangguh, berprestasi, berkepribadian mulia, serta siap membela kebenaran dan keadilan di Pondok Pesantren Karangasem Paciran.
+                        </p>
+                        <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+                            <a href="https://wa.me/6285808437307?text=Halo%20Admin,%20saya%20ingin%20mendaftar%20Tapak%20Suci%20Karangasem" 
+                               target="_blank" 
+                               class="w-full sm:w-auto px-8 py-3.5 bg-tsYellow text-gray-900 hover:bg-yellow-300 font-bold rounded-xl shadow-lg hover:shadow-xl transition-all text-center flex items-center justify-center space-x-2">
+                                <i class="fa-solid fa-user-plus text-tsRed"></i>
+                                <span>Daftar / Pendaftaran Cepat</span>
+                            </a>
+                            <a href="#profil" class="w-full sm:w-auto px-8 py-3.5 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-semibold rounded-xl border border-white/20 transition-all text-center">
+                                Pelajari Profil
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Hero Visual Card -->
+                    <div class="lg:col-span-5">
+                        <div class="relative mx-auto max-w-md px-2 pt-2 pb-12 lg:max-w-none">
+                            <div class="relative aspect-[4/3] overflow-hidden rounded-3xl border border-white/30 shadow-2xl">
+                                <img src="WhatsApp Image 2026-08-01 at 21.19.48.jpeg" alt="Tim Tapak Suci meraih juara umum di Rector Cup 2026" class="absolute inset-0 h-full w-full object-cover object-center">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/15 to-black/5"></div>
+                                <div class="absolute left-4 top-4 inline-flex items-center gap-2 rounded-full bg-tsYellow px-3 py-1.5 text-xs font-extrabold text-gray-900 shadow-lg">
+                                    <i class="fa-solid fa-trophy text-tsRed"></i>
+                                    <span>JUARA UMUM I</span>
+                                </div>
+                                <div class="absolute bottom-0 left-0 right-0 p-5 pr-24 text-white sm:p-6 sm:pr-28">
+                                    <p class="text-xs font-bold uppercase tracking-widest text-yellow-300">Rector Cup</p>
+                                    <h3 class="text-2xl font-black leading-tight">Prestasi Membanggakan</h3>
+                                    <p class="mt-1 text-sm text-white/85">Tapak Suci Ponpes Karangasem Paciran · 2026</p>
+                                </div>
+                            </div>
+                            <div class="absolute bottom-0 right-0 w-36 rotate-3 overflow-hidden rounded-2xl border-4 border-white bg-white shadow-2xl transition-transform duration-300 hover:rotate-0 sm:w-44">
+                                <div class="relative aspect-[3/4] overflow-hidden rounded-xl">
+                                    <img src="WhatsApp Image 2026-08-01 at 21.15.58 (1).jpeg" alt="Tim Tapak Suci berprestasi di Rector Cup 2026" class="absolute inset-0 h-full w-full object-cover object-center">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                                    <span class="absolute bottom-3 left-3 right-3 text-sm font-extrabold leading-tight text-white">PRESTASI 2026</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. PROFIL (SEJARAH, VISI MISI) -->
+        <section id="profil" class="py-16 sm:py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">Profil & Sejarah</h2>
+                    <div class="w-16 h-1 bg-tsRed mx-auto my-4 rounded-full"></div>
+                    <p class="text-gray-600">Perjalanan perjuangan dan landasan pergerakan Tapak Suci di Ponpes Karangasem.</p>
+                </div>
+
+                <!-- SEJARAH SECTION -->
+                <div class="bg-red-50/50 p-6 sm:p-10 rounded-3xl border border-red-100 mb-12 shadow-sm">
+                    <div class="flex items-center space-x-4 mb-6">
+                        <div class="w-12 h-12 bg-tsRed text-white rounded-2xl flex items-center justify-center shadow-md">
+                            <i class="fa-solid fa-landmark text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900">Sejarah Tapak Suci Karangasem</h3>
+                            <p class="text-xs text-tsRed font-medium">Perjuangan Berdiri & Perkembangan</p>
+                        </div>
+                    </div>
+
+                    <div class="prose max-w-none text-gray-700 leading-relaxed space-y-4 text-base">
+                        <p>
+                            Dulu di Pondok Pesantren Karangasem kegiatan Tapak Suci itu belum ada. Namun, timbul keinginan kuat dan tekad dari sekelompok orang yang gigih untuk menghidupkan serta mendirikan Tapak Suci di lingkungan Ponpes Karangasem.
+                        </p>
+                        <p>
+                            Dengan semangat pantang menyerah dan kerja keras sekelompok orang tersebut, Tapak Suci Karangasem perlahan-lahan hidup, berkembang pesat, hingga berhasil memenuhinya dengan berbagai raihan prestasi emas dan tetap bersinar terang sampai sekarang.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- VISI & MISI -->
+                <div class="grid grid-cols-1 gap-12 md:grid-cols-12 md:gap-16">
+                    <div class="md:col-span-4 md:pr-4">
+                        <div class="flex items-center gap-3">
+                            <span class="text-sm font-black text-tsRed">01</span>
+                            <span class="h-px w-10 bg-tsYellow"></span>
+                            <span class="text-xs font-extrabold uppercase tracking-widest text-gray-500">Arah Pembinaan</span>
+                        </div>
+                        <h3 class="mt-7 text-3xl font-black text-gray-900">Visi Utama</h3>
+                        <p class="mt-6 border-l-4 border-tsYellow pl-5 text-lg font-medium leading-relaxed text-gray-700">
+                            Mewujudkan Tapak Suci Karangasem sebagai wadah pembinaan generasi muda yang beriman, berakhlak mulia, tangguh, berprestasi, serta menjunjung tinggi nilai-nilai persaudaraan dan sportivitas.
+                        </p>
+                    </div>
+
+                    <div class="md:col-span-8">
+                        <div class="flex items-center gap-3">
+                            <span class="text-sm font-black text-tsRed">02</span>
+                            <span class="h-px w-10 bg-tsYellow"></span>
+                            <span class="text-xs font-extrabold uppercase tracking-widest text-gray-500">Langkah Bersama</span>
+                        </div>
+                        <h3 class="mt-7 text-3xl font-black text-gray-900">Misi Utama</h3>
+                        <ul class="mt-5 grid grid-cols-1 gap-x-10 sm:grid-cols-2">
+                            <li class="flex items-start gap-4 border-t border-gray-200 py-5">
+                                <span class="pt-0.5 text-xl font-black text-tsRed">01</span>
+                                <span class="text-sm leading-relaxed text-gray-700">Membentuk karakter pendekar yang beriman, disiplin, bertanggung jawab, dan berakhlak mulia.</span>
+                            </li>
+                            <li class="flex items-start gap-4 border-t border-gray-200 py-5">
+                                <span class="pt-0.5 text-xl font-black text-tsRed">02</span>
+                                <span class="text-sm leading-relaxed text-gray-700">Meningkatkan kualitas atlet melalui latihan yang terarah, konsisten, dan berkelanjutan.</span>
+                            </li>
+                            <li class="flex items-start gap-4 border-t border-gray-200 py-5">
+                                <span class="pt-0.5 text-xl font-black text-tsRed">03</span>
+                                <span class="text-sm leading-relaxed text-gray-700">Menanamkan jiwa persaudaraan serta mempererat solidaritas antaranggota Tapak Suci Karangasem.</span>
+                            </li>
+                            <li class="flex items-start gap-4 border-t border-gray-200 py-5">
+                                <span class="pt-0.5 text-xl font-black text-tsRed">04</span>
+                                <span class="text-sm leading-relaxed text-gray-700">Melestarikan seni bela diri pencak silat sebagai warisan budaya bangsa yang berlandaskan nilai-nilai Islam.</span>
+                            </li>
+                            <li class="flex items-start gap-4 border-t border-gray-200 py-5">
+                                <span class="pt-0.5 text-xl font-black text-tsRed">05</span>
+                                <span class="text-sm leading-relaxed text-gray-700">Mencetak generasi berprestasi yang mampu bersaing di tingkat daerah, nasional, hingga internasional.</span>
+                            </li>
+                            <li class="flex items-start gap-4 border-t border-gray-200 py-5">
+                                <span class="pt-0.5 text-xl font-black text-tsRed">06</span>
+                                <span class="text-sm leading-relaxed text-gray-700">Menumbuhkan jiwa kepemimpinan agar setiap anggota mampu menjadi teladan di lingkungan masyarakat.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 3. PROGRAM & LAYANAN -->
+        <section id="program" class="py-16 sm:py-24 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">Program Kegiatan</h2>
+                    <div class="w-16 h-1 bg-tsRed mx-auto my-4 rounded-full"></div>
+                    <p class="text-gray-600">Berbagai pilar latihan dan pembinaan anggota Tapak Suci Karangasem.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    
+                    <!-- Program 01 -->
+                    <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 hover:shadow-xl transition-all group">
+                        <div class="w-14 h-14 bg-red-100 text-tsRed rounded-2xl flex items-center justify-center font-extrabold text-xl mb-6 group-hover:bg-tsRed group-hover:text-white transition-colors">
+                            01
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Latihan Rutin Santri</h3>
+                        <p class="text-gray-600 leading-relaxed text-sm">
+                            Latihan rutin santri bertujuan untuk pembinaan dalam menjaga diri, melatih fisik, kewaspadaan, dan kebugaran tubuh secara berkesinambungan.
+                        </p>
+                    </div>
+
+                    <!-- Program 02 -->
+                    <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 hover:shadow-xl transition-all group">
+                        <div class="w-14 h-14 bg-amber-100 text-amber-700 rounded-2xl flex items-center justify-center font-extrabold text-xl mb-6 group-hover:bg-tsYellow group-hover:text-gray-900 transition-colors">
+                            02
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Pembinaan Atlet Berprestasi</h3>
+                        <p class="text-gray-600 leading-relaxed text-sm">
+                            Program khusus yang bertujuan untuk menjadikan atlet berprestasi dalam olahraga Tapak Suci, yang dipersiapkan khusus menuju gelanggang kejuaraan.
+                        </p>
+                    </div>
+
+                    <!-- Program 03 -->
+                    <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 hover:shadow-xl transition-all group">
+                        <div class="w-14 h-14 bg-emerald-100 text-emerald-700 rounded-2xl flex items-center justify-center font-extrabold text-xl mb-6 group-hover:bg-emerald-600 group-hover:text-white transition-colors">
+                            03
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Ujian Kenaikan Tingkat (UKT)</h3>
+                        <p class="text-gray-600 leading-relaxed text-sm">
+                            Bertujuan untuk meningkatkan tingkat para siswa dan pengkaderan generasi penerus pesilat Tapak Suci yang handal secara sistematis.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 4. BERITA & GALERI -->
+        <section id="berita" class="py-16 sm:py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">Berita & Galeri Prestasi</h2>
+                    <div class="w-16 h-1 bg-tsRed mx-auto my-4 rounded-full"></div>
+                    <p class="text-gray-600">Dokumentasi momen kejayaan dan berita kejuaraan resmi terbaru.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    
+                    <!-- Card Berita 1 -->
+                    <div class="bg-gray-50 rounded-3xl overflow-hidden border border-gray-100 shadow-sm flex flex-col">
+                        <div class="relative h-64 overflow-hidden">
+                            <img src="WhatsApp Image 2026-08-01 at 21.19.48.jpeg" alt="Kontingen Tapak Suci pada Rector Cup UMLA 2026" class="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-500 hover:scale-105">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-black/10"></div>
+                            <div class="absolute top-4 right-4 bg-yellow-400 text-gray-900 font-extrabold text-xs px-3 py-1.5 rounded-full uppercase shadow-lg">
+                                Prestasional 2026
+                            </div>
+                            <i class="fa-solid fa-trophy text-5xl text-white/40 absolute top-5 left-5"></i>
+                            <h3 class="absolute bottom-5 left-6 right-6 text-xl font-bold leading-tight text-white drop-shadow-lg">
+                                Sebelas Atlet Tapak Suci MAMSAKA Paciran Raih Gelar Juara Pada Rektor Cup UMLA 2026
+                            </h3>
+                        </div>
+                        <div class="p-6 flex-grow flex flex-col justify-between">
+                            <p class="text-gray-600 text-sm leading-relaxed mb-6">
+                                Keberhasilan membanggakan kembali diraih oleh kontingen pesilat Tapak Suci MAMSAKA Ponpes Karangasem Paciran yang tampil gemilang memborong medali juara dalam ajang Rektor Cup UMLA 2026.
+                            </p>
+                            <a href="https://pwmu.co/sebelas-atlet-tapak-suci-mamsaka-paciran-raih-gelar-juara-pada-rektor-cup-umla-2026/" 
+                               target="_blank" 
+                               class="inline-flex items-center space-x-2 text-tsRed font-bold text-sm hover:underline">
+                                <span>Baca Selengkapnya di PWMU.CO</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Card Berita 2 -->
+                    <div class="bg-gray-50 rounded-3xl overflow-hidden border border-gray-100 shadow-sm flex flex-col">
+                        <div class="relative h-64 overflow-hidden">
+                            <img src="WhatsApp Image 2026-08-01 at 21.15.58 (1).jpeg" alt="Pesilat Tapak Suci meraih prestasi kejuaraan" class="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-500 hover:scale-105">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-black/10"></div>
+                            <div class="absolute top-4 right-4 bg-white text-gray-900 font-extrabold text-xs px-3 py-1.5 rounded-full uppercase shadow-lg">
+                                Juara Umum I
+                            </div>
+                            <i class="fa-solid fa-medal text-5xl text-white/40 absolute top-5 left-5"></i>
+                            <h3 class="absolute bottom-5 left-6 right-6 text-xl font-bold leading-tight text-white drop-shadow-lg">
+                                Tapak Suci Ponpes Karangasem Memborong Juara Kejuaraan Pencak Silat
+                            </h3>
+                        </div>
+                        <div class="p-6 flex-grow flex flex-col justify-between">
+                            <p class="text-gray-600 text-sm leading-relaxed mb-6">
+                                Berita catatan kejuaraan resmi dari arena turnamen nasional dan keberhasilan tim pesilat Ponpes Karangasem menyabet trophy Juara Umum I (Hadiah Pembinaan Rp 700.000).
+                            </p>
+                            <a href="https://www.ponpeskarangasem.com/2020/05/borong-kejuaraan-nasional-pencak-silat.html" 
+                               target="_blank" 
+                               class="inline-flex items-center space-x-2 text-tsRed font-bold text-sm hover:underline">
+                                <span>Baca di Portal Web Ponpes Karangasem</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Card Berita 3 -->
+                    <div class="bg-gray-50 rounded-3xl overflow-hidden border border-gray-100 shadow-sm flex flex-col">
+                        <div class="relative h-64 overflow-hidden">
+                            <img src="images (2).jpg" alt="Lima siswa SMPM Jipat meraih juara Tapak Suci tingkat nasional 2022" class="absolute inset-0 h-full w-full object-cover object-center">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-black/10"></div>
+                            <span class="absolute top-4 right-4 rounded-full bg-tsYellow px-3 py-1.5 text-xs font-extrabold uppercase text-gray-900 shadow-lg">Nasional 2022</span>
+                            <h3 class="absolute bottom-5 left-6 right-6 text-xl font-bold leading-tight text-white drop-shadow-lg">5 Siswa SMPM Jipat Juara Tapak Suci Tingkat Nasional</h3>
+                        </div>
+                        <div class="p-6 flex-grow flex flex-col justify-between">
+                            <p class="text-gray-600 text-sm leading-relaxed mb-6">Lima siswa SMPM Jipat Karangasem meraih juara pada 12th Airlangga Championship Tapak Suci National Open 2022.</p>
+                            <a href="https://lintasjatimnews.com/2022/11/03/5-siswa-smpm-jipat-karangasem-paciran-lamongan-juara-tapak-suci-tingkat-nasional/" target="_blank" rel="noopener" class="inline-flex items-center space-x-2 text-tsRed font-bold text-sm hover:underline">
+                                <span>Baca selengkapnya di LintasJatimNews</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Card Berita 4 -->
+                    <div class="bg-gray-50 rounded-3xl overflow-hidden border border-gray-100 shadow-sm flex flex-col">
+                        <div class="relative h-64 overflow-hidden">
+                            <img src="images (1).jpg" alt="Tujuh pesilat SMPM Jipat meraih medali di 14th Airlangga Championship 2024" class="absolute inset-0 h-full w-full object-cover object-center">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-black/10"></div>
+                            <span class="absolute top-4 right-4 rounded-full bg-white px-3 py-1.5 text-xs font-extrabold uppercase text-tsRed shadow-lg">ACTSNO Jatim 2024</span>
+                            <h3 class="absolute bottom-5 left-6 right-6 text-xl font-bold leading-tight text-white drop-shadow-lg">Tujuh Pesilat SMPM Jipat Borong Medali</h3>
+                        </div>
+                        <div class="p-6 flex-grow flex flex-col justify-between">
+                            <p class="text-gray-600 text-sm leading-relaxed mb-6">Kontingen SMPM Jipat membawa pulang dua medali emas dan lima medali perunggu dari 14th ACTSNO Jatim 2024 di Universitas Airlangga.</p>
+                            <a href="https://lintasjatimnews.com/2024/12/04/tujuh-pesilat-smpm-jipat-karangasem-borong-medali-di-ajang-14th-actsno-jatim-2024/" target="_blank" rel="noopener" class="inline-flex items-center space-x-2 text-tsRed font-bold text-sm hover:underline">
+                                <span>Baca selengkapnya di LintasJatimNews</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Card Berita 6 -->
+                    <div class="bg-gray-50 rounded-3xl overflow-hidden border border-gray-100 shadow-sm flex flex-col">
+                        <div class="relative h-64 overflow-hidden bg-gray-900">
+                            <img src="instagram-mamsaka-24-championship-2026.jpg" alt="Poster prestasi siswa MAMSAKA di International Referee Juri 24 Championship 2026" class="absolute inset-0 h-full w-full object-cover object-center">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-transparent"></div>
+                            <span class="absolute top-4 right-4 rounded-full bg-tsYellow px-3 py-1.5 text-xs font-extrabold uppercase text-gray-900 shadow-lg">Malang · 2026</span>
+                            <h3 class="absolute bottom-5 left-6 right-6 text-xl font-bold leading-tight text-white drop-shadow-lg">Murid MAMSAKA Berprestasi di International Referee Juri 24 Championship</h3>
+                        </div>
+                        <div class="p-6 flex-grow flex flex-col justify-between">
+                            <p class="text-gray-600 text-sm leading-relaxed mb-6">Para pendekar muda MAMSAKA meraih medali di GOR Ken Arok, Malang, pada 25–27 September 2026.</p>
+                            <a href="https://www.instagram.com/p/DdxpEy0Eou5/?img_index=1" target="_blank" rel="noopener" class="inline-flex items-center space-x-2 text-tsRed font-bold text-sm hover:underline">
+                                <span>Lihat unggahan di Instagram</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Card Berita 5 -->
+                    <div class="bg-gray-50 rounded-3xl overflow-hidden border border-gray-100 shadow-sm flex flex-col">
+                        <div class="relative h-64 overflow-hidden">
+                            <img src="Liputan-siswa-Mamsaka-juara-TS-O2SM.webp" alt="Siswa Mamsaka menerima penghargaan Tapak Suci O2SM 2025" class="absolute inset-0 h-full w-full object-cover object-center">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-black/10"></div>
+                            <span class="absolute top-4 right-4 rounded-full bg-tsYellow px-3 py-1.5 text-xs font-extrabold uppercase text-gray-900 shadow-lg">O2SM 2025</span>
+                            <h3 class="absolute bottom-5 left-6 right-6 text-xl font-bold leading-tight text-white drop-shadow-lg">Siswa Mamsaka Juara Tapak Suci O2SM 2025</h3>
+                        </div>
+                        <div class="p-6 flex-grow flex flex-col justify-between">
+                            <p class="text-gray-600 text-sm leading-relaxed mb-6">Siswa Mamsaka meraih empat gelar juara dalam lomba Tapak Suci O2SM tingkat se-Keresidenan Bojonegoro 2025.</p>
+                            <a href="https://pwmu.co/membanggakan-siswa-mamsaka-juara-di-lomba-tapak-suci-o2sm-tingkat-se-keresidenan-bojonegoro-2025/" target="_blank" rel="noopener" class="inline-flex items-center space-x-2 text-tsRed font-bold text-sm hover:underline">
+                                <span>Baca selengkapnya di PWMU.CO</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="mt-16">
+                    <div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between mb-6">
+                        <div>
+                            <p class="text-sm font-extrabold uppercase tracking-widest text-tsRed">Dokumentasi</p>
+                            <h3 class="mt-1 text-2xl font-black text-gray-900">Galeri Prestasi 2026</h3>
+                        </div>
+                        <p class="text-sm text-gray-600">Momen perjuangan dan kemenangan tim Tapak Suci Karangasem.</p>
+                    </div>
+                    <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
+                        <figure class="group relative aspect-[4/3] overflow-hidden rounded-2xl bg-gray-900 shadow-lg">
+                            <img src="WhatsApp Image 2026-08-01 at 21.19.48.jpeg" alt="Kontingen Tapak Suci di podium Rector Cup 2026" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
+                            <figcaption class="absolute bottom-0 left-0 p-5 text-white">
+                                <span class="inline-flex items-center gap-2 rounded-full bg-tsYellow px-3 py-1 text-xs font-extrabold text-gray-900"><i class="fa-solid fa-trophy text-tsRed"></i> JUARA UMUM I</span>
+                                <p class="mt-2 text-lg font-extrabold">Rector Cup UMLA 2026</p>
+                            </figcaption>
+                        </figure>
+                        <figure class="group relative aspect-[4/3] overflow-hidden rounded-2xl bg-gray-900 shadow-lg">
+                            <img src="WhatsApp Image 2026-08-01 at 21.15.58 (1).jpeg" alt="Tim Tapak Suci dalam dokumentasi prestasi 2026" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
+                            <figcaption class="absolute bottom-0 left-0 p-5 text-white">
+                                <span class="inline-flex items-center gap-2 rounded-full bg-white px-3 py-1 text-xs font-extrabold text-tsRed"><i class="fa-solid fa-medal"></i> PRESTASI 2026</span>
+                                <p class="mt-2 text-lg font-extrabold">Tapak Suci Ponpes Karangasem</p>
+                            </figcaption>
+                        </figure>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 5. KONTAK & PETA -->
+        <section id="kontak" class="py-16 sm:py-24 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">Kontak & Lokasi</h2>
+                    <div class="w-16 h-1 bg-tsRed mx-auto my-4 rounded-full"></div>
+                    <p class="text-gray-600">Hubungi kami atau kunjungi padepokan Tapak Suci Ponpes Karangasem Paciran.</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                    
+                    <!-- Information Column -->
+                    <div class="lg:col-span-5 space-y-6">
+                        <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-sm border border-gray-100 flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-red-100 text-tsRed rounded-2xl flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-location-dot text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 text-lg mb-1">Alamat Padepokan</h4>
+                                <p class="text-gray-600 text-sm leading-relaxed">
+                                    Pondok Pesantren Karangasem, Kecamatan Paciran, Kabupaten Lamongan, Jawa Timur 62264.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-sm border border-gray-100 flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center shrink-0">
+                                <i class="fa-brands fa-whatsapp text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 text-lg mb-1">WhatsApp Resmi</h4>
+                                <p class="text-emerald-700 font-extrabold text-lg mb-2">085808437307</p>
+                                <a href="https://wa.me/6285808437307?text=Halo%20Admin%20Tapak%20Suci%20Karangasem" 
+                                   target="_blank" 
+                                   class="inline-block text-xs bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-4 py-2 rounded-lg transition-colors">
+                                    Klik Pesan Sekarang
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Map Column -->
+                    <div class="lg:col-span-7">
+                        <div class="bg-white p-3 rounded-3xl shadow-sm border border-gray-100 h-[380px] overflow-hidden">
+                            <iframe 
+                                title="Peta Lokasi Ponpes Karangasem Paciran"
+                                src="https://maps.google.com/maps?q=Pondok%20Pesantren%20Karangasem%20Paciran%20Lamongan&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+                                class="w-full h-full rounded-2xl border-0" 
+                                allowfullscreen="" 
+                                loading="lazy">
+                            </iframe>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-900 text-white py-12 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+            <div class="flex items-center justify-center space-x-3">
+                <div class="w-8 h-8 bg-tsRed rounded-lg flex items-center justify-center p-1">
+                    <svg viewBox="0 0 100 100" class="w-full h-full text-tsYellow fill-current">
+                        <polygon points="50,5 61,35 95,35 68,55 79,90 50,70 21,90 32,55 5,35 39,35" />
+                        <circle cx="50" cy="48" r="22" fill="#0066CC" />
+                    </svg>
+                </div>
+                <span class="font-bold text-lg tracking-wide">TAPAK SUCI PONPES KARANGASEM PACIRAN</span>
+            </div>
+            <p class="text-xs text-gray-400">
+                &copy; 2026 Tapak Suci Ponpes Karangasem Paciran. Dengan Iman dan Akhlak Saya Menjadi Kuat.
+            </p>
+        </div>
+    </footer>
+
+    <!-- SCRIPT MOBILE NAV TOGGLE -->
+    <script>
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            var menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
