@@ -139,23 +139,58 @@
         #program .grid > div:nth-child(2) .program-mark { color: #987500; }
         #program .grid > div:nth-child(3) .program-mark { color: #287452; }
         .program-focus { margin-top: 1.5rem; border-top: 1px solid #e4e6e3; padding-top: 1rem; color: #636b68; font-size: .68rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
-        .reflex-section { background: #f0f3f0; }
-        .reflex-best { display: flex; align-items: center; gap: 1rem; margin-top: 2rem; border-top: 1px solid #d5dbd7; padding-top: 1.25rem; }
-        .reflex-best-icon { display: grid; width: 3rem; aspect-ratio: 1; place-items: center; background: var(--ts-yellow); color: #202321; }
-        .reflex-best-value { margin-top: .15rem; color: var(--ts-ink); font-family: 'Barlow Condensed', sans-serif; font-size: 2rem; font-weight: 800; line-height: 1; }
-        .reflex-pad { position: relative; display: flex; min-height: 22rem; width: 100%; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; overflow: hidden; border: 1px solid #343a37; border-radius: 8px; background: linear-gradient(145deg, #1a1e1c, #292e2b); color: #fff; cursor: pointer; transition: background .2s ease, color .2s ease, transform .2s ease; }
-        .reflex-pad::before { position: absolute; inset: 0 0 auto; height: 4px; background: var(--ts-yellow); content: ""; }
-        .reflex-pad:hover { transform: translateY(-2px); }
-        .reflex-pad[data-state="waiting"] { background: #551a1f; cursor: wait; }
-        .reflex-pad[data-state="ready"] { background: var(--ts-yellow); color: #1b201d; }
-        .reflex-pad[data-state="result"] { background: #183c2e; }
-        .reflex-pad[data-state="false-start"] { background: #761b20; }
-        .reflex-signal { display: grid; width: 5rem; aspect-ratio: 1; place-items: center; border: 1px solid currentColor; border-radius: 50%; font-size: 1.6rem; }
-        .reflex-pad[data-state="ready"] .reflex-signal { border-color: #1b201d; background: #1b201d; color: var(--ts-yellow); animation: signal-pulse .8s ease-in-out infinite alternate; }
-        .reflex-prompt { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 800; line-height: 1; text-align: center; }
-        .reflex-subprompt { max-width: 24rem; padding: 0 1rem; color: currentColor; font-size: .8rem; line-height: 1.6; opacity: .76; text-align: center; }
-        .reflex-result { min-height: 1.5rem; margin-top: .9rem; color: #525c57; font-size: .8rem; font-weight: 700; text-align: center; }
-        @keyframes signal-pulse { from { transform: scale(1); } to { transform: scale(1.12); } }
+        .score-section { background: #f0f3f0; }
+        .score-toolbar { display: flex; align-items: end; justify-content: space-between; gap: 1rem; margin-bottom: 1rem; border-bottom: 1px solid #d5dbd7; padding-bottom: 1rem; }
+        .score-toolbar-actions { display: flex; flex-wrap: wrap; gap: .5rem; }
+        .score-penalty-rule { display: flex; align-items: center; gap: .55rem; color: #9c1b21; font-size: .72rem; font-weight: 800; }
+        .score-utility-button { min-height: 2.5rem; border: 1px solid #cbd2cd; border-radius: 4px; background: #fff; padding: .55rem .8rem; color: #424a46; font-size: .72rem; font-weight: 800; transition: background .15s ease, color .15s ease; }
+        .score-utility-button:hover:not(:disabled) { background: #1c2221; color: #fff; }
+        .score-utility-button:disabled { cursor: not-allowed; opacity: .45; }
+        .score-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+        .score-card { border: 1px solid #dfe4e0; border-top: 5px solid #b8141c; border-radius: 6px; background: #fff; padding: clamp(1rem, 3vw, 2rem); box-shadow: 0 12px 30px rgba(28, 34, 33, .06); }
+        .score-card[data-corner="blue"] { border-top-color: #28618b; }
+        .score-card-heading { display: flex; align-items: center; justify-content: space-between; gap: .75rem; color: #a5141b; font-size: .72rem; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; }
+        .score-card[data-corner="blue"] .score-card-heading { color: #28618b; }
+        .score-name-label { display: grid; gap: .4rem; margin-top: 1.25rem; color: #737b77; font-size: .65rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+        .score-name-input { width: 100%; min-width: 0; border: 0; border-bottom: 1px solid #d8ded9; border-radius: 0; background: transparent; padding: .45rem 0; color: var(--ts-ink); font: 700 1rem 'Manrope', sans-serif; outline-offset: 4px; }
+        .score-total { margin: 1rem 0; color: #1b201d; font: 900 clamp(4.5rem, 11vw, 7rem)/.9 'Barlow Condensed', sans-serif; font-variant-numeric: tabular-nums; }
+        .score-card[data-corner="blue"] .score-total { color: #1e5279; }
+        .score-action-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .5rem; }
+        .score-action-button { display: flex; min-height: 3.2rem; align-items: center; justify-content: space-between; gap: .4rem; border: 1px solid #dfe4e0; border-radius: 4px; background: #fafbf9; padding: .65rem .75rem; color: #252b28; font-size: .72rem; font-weight: 800; text-align: left; transition: border-color .15s ease, background .15s ease, transform .15s ease; }
+        .score-action-button:hover { transform: translateY(-1px); border-color: #9da8a1; background: #fff; }
+        .score-action-button span:last-child { color: #6a736e; font-variant-numeric: tabular-nums; }
+        .score-card[data-corner="blue"] .score-action-button:hover { border-color: #28618b; }
+        .score-action-button[data-action="penalty"] { grid-column: 1 / -1; border-color: #e8c9c9; background: #fff8f8; color: #9c1b21; }
+        .score-action-button[data-action="penalty"] span:last-child { color: #9c1b21; }
+        .score-log { display: grid; grid-template-columns: minmax(10rem, .7fr) 1.3fr; gap: 1.25rem; margin-top: 1rem; border: 1px solid #dfe4e0; border-radius: 6px; background: #fff; padding: 1rem 1.25rem; }
+        .score-log-title { color: #747d78; font-size: .62rem; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; }
+        .score-log-last { margin-top: .35rem; color: #303835; font-size: .85rem; font-weight: 800; }
+        .score-history { display: flex; flex-wrap: wrap; align-content: start; gap: .4rem; margin: 0; padding: 0; list-style: none; }
+        .score-history li { border-left: 2px solid var(--ts-yellow); background: #f6f7f5; padding: .4rem .55rem; color: #59615d; font-size: .65rem; font-weight: 700; }
+        .score-note { margin-top: .75rem; color: #737b77; font-size: .68rem; }
+        .score-penalty-control { display: flex; align-items: center; gap: .6rem; color: #59615d; font-size: .7rem; font-weight: 800; }
+        .score-penalty-control select { min-height: 2.5rem; border: 1px solid #cbd2cd; border-radius: 4px; background: #fff; padding: .5rem .65rem; color: #9c1b21; font: inherit; }
+        .score-card-state { min-height: 1.1rem; margin-top: .35rem; color: #69716d; font-size: .65rem; font-weight: 900; letter-spacing: .1em; }
+        .score-card[data-disqualified="true"] { border-color: #b8141c; background: #fff7f7; }
+        .score-card[data-disqualified="true"] .score-card-state { color: #b8141c; }
+        .score-match-status { min-height: 1.25rem; margin: .25rem 0 .75rem; color: #56615b; font-size: .75rem; font-weight: 900; }
+        .score-action-button:disabled { cursor: not-allowed; opacity: .4; transform: none; }
+        .score-room-panel { display: flex; flex-direction: column; align-items: stretch; gap: .75rem; margin-bottom: 1rem; border: 1px solid #dfe4e0; border-left: 4px solid var(--ts-yellow); border-radius: 6px; background: #fff; padding: 1rem; }
+        .score-room-status { color: #202724; font-size: .78rem; font-weight: 900; }
+        .score-room-detail { margin-top: .25rem; color: #6a736e; font-size: .68rem; }
+        .score-room-status[data-state="error"] { color: #a5141b; }
+        .score-room-status[data-state="live"] { color: #246846; }
+        .score-room-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .45rem; }
+        .score-room-code { width: 8.5rem; min-height: 2.5rem; border: 1px solid #cbd2cd; border-radius: 4px; padding: .55rem .65rem; font-size: .75rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+        .score-room-button { min-height: 2.5rem; border: 1px solid #252b28; border-radius: 4px; background: #252b28; padding: .55rem .75rem; color: #fff; font-size: .68rem; font-weight: 900; text-transform: uppercase; }
+        .score-room-button:hover:not(:disabled) { background: #111513; }
+        .score-room-button:disabled { cursor: not-allowed; opacity: .4; }
+        .score-monitor-banner { margin-bottom: 1rem; border-left: 4px solid #28618b; background: #eaf2f8; padding: .75rem 1rem; color: #214663; font-size: .75rem; font-weight: 800; }
+        body[data-score-mode="monitor"] .score-room-actions,
+        body[data-score-mode="monitor"] .score-toolbar-actions,
+        body[data-score-mode="monitor"] .score-penalty-control,
+        body[data-score-mode="monitor"] .score-action-grid { display: none; }
+        body[data-score-mode="monitor"] .score-name-input { pointer-events: none; border-bottom-color: transparent; }
         #berita .section-intro { max-width: none; }
         #berita .section-intro + .grid { align-items: stretch; }
         #berita .grid > div:nth-child(-n+2) > div:first-child { height: 22rem; }
@@ -178,7 +213,11 @@
             .section-intro { margin-bottom: 2.5rem !important; }
             .history-timeline { grid-template-columns: 1fr; }
             #profil .grid > div:first-child { padding: 1.5rem; }
-            .reflex-pad { min-height: 18rem; }
+            .score-toolbar { align-items: stretch; flex-direction: column; }
+            .score-toolbar-actions { width: 100%; }
+            .score-utility-button { flex: 1; }
+            .score-grid { grid-template-columns: 1fr; }
+            .score-log { grid-template-columns: 1fr; }
             #berita .grid > div:nth-child(-n+2) > div:first-child { height: 17rem; }
             #berita .grid > div:nth-child(n+3) > div:first-child { height: 15rem; }
             #berita figure:first-child, #berita figure:last-child { min-height: 0; aspect-ratio: 4 / 3; margin-top: 0; }
@@ -188,7 +227,6 @@
         }
         @media (prefers-reduced-motion: reduce) {
             .hero-content > * { animation: none; }
-            .reflex-pad[data-state="ready"] .reflex-signal { animation: none; }
         }
     </style>
 </head>
@@ -210,7 +248,7 @@
                 </a>
 
                 <!-- Desktop Navigation Links -->
-                <nav class="hidden md:flex items-center gap-0.5 lg:gap-1">
+                <nav class="hidden xl:flex items-center gap-0.5 lg:gap-1">
                     <a href="#beranda" class="whitespace-nowrap px-2 py-2 text-xs font-semibold text-gray-700 hover:text-tsRed hover:bg-red-50 rounded-lg transition-colors lg:px-2.5 lg:text-sm">
                         <i class="fa-solid fa-house text-tsRed mr-1.5"></i> Beranda
                     </a>
@@ -220,8 +258,8 @@
                     <a href="#program" class="whitespace-nowrap px-2 py-2 text-xs font-semibold text-gray-700 hover:text-tsRed hover:bg-red-50 rounded-lg transition-colors lg:px-2.5 lg:text-sm">
                         <i class="fa-solid fa-calendar-check text-tsRed mr-1.5"></i> Program
                     </a>
-                    <a href="#refleks" class="whitespace-nowrap px-2 py-2 text-xs font-semibold text-gray-700 hover:text-tsRed hover:bg-red-50 rounded-lg transition-colors lg:px-2.5 lg:text-sm">
-                        <i class="fa-solid fa-bolt text-tsRed mr-1.5"></i> Refleks
+                    <a href="#skor" class="whitespace-nowrap px-2 py-2 text-xs font-semibold text-gray-700 hover:text-tsRed hover:bg-red-50 rounded-lg transition-colors lg:px-2.5 lg:text-sm">
+                        <i class="fa-solid fa-stopwatch text-tsRed mr-1.5"></i> Skor
                     </a>
                     <a href="#berita" class="whitespace-nowrap px-2 py-2 text-xs font-semibold text-gray-700 hover:text-tsRed hover:bg-red-50 rounded-lg transition-colors lg:px-2.5 lg:text-sm">
                         <i class="fa-solid fa-newspaper text-tsRed mr-1.5"></i> Berita & Galeri
@@ -232,7 +270,7 @@
                 </nav>
 
                 <!-- CTA WhatsApp Desktop -->
-                <div class="hidden md:block">
+                <div class="hidden xl:block">
                     <a href="https://wa.me/6285808437307?text=Halo%20Tapak%20Suci%20Ponpes%20Karangasem,%20saya%20ingin%20bertanya%20informasi" 
                        target="_blank" 
                        class="inline-flex items-center space-x-2 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-sm px-4 py-2.5 rounded-xl shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5">
@@ -242,7 +280,7 @@
                 </div>
 
                 <!-- Mobile Menu Button -->
-                <div class="md:hidden flex items-center">
+                <div class="xl:hidden flex items-center">
                     <button id="mobile-menu-btn" class="p-2 rounded-lg text-gray-600 hover:text-gray-900 hover:bg-gray-100 focus:outline-none">
                         <i class="fa-solid fa-bars text-2xl"></i>
                     </button>
@@ -251,7 +289,7 @@
         </div>
 
         <!-- Mobile Navigation Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 px-4 pt-2 pb-4 space-y-1 shadow-lg">
+        <div id="mobile-menu" class="hidden xl:hidden bg-white border-t border-gray-100 px-4 pt-2 pb-4 space-y-1 shadow-lg">
             <a href="#beranda" class="block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:bg-red-50 hover:text-tsRed">
                 <i class="fa-solid fa-house text-tsRed w-6"></i> Beranda
             </a>
@@ -261,8 +299,8 @@
             <a href="#program" class="block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:bg-red-50 hover:text-tsRed">
                 <i class="fa-solid fa-calendar-check text-tsRed w-6"></i> Program
             </a>
-            <a href="#refleks" class="block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:bg-red-50 hover:text-tsRed">
-                <i class="fa-solid fa-bolt text-tsRed w-6"></i> Tes Refleks
+            <a href="#skor" class="block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:bg-red-50 hover:text-tsRed">
+                <i class="fa-solid fa-stopwatch text-tsRed w-6"></i> Pro Score Silat
             </a>
             <a href="#berita" class="block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:bg-red-50 hover:text-tsRed">
                 <i class="fa-solid fa-newspaper text-tsRed w-6"></i> Berita & Galeri
@@ -483,29 +521,84 @@
             </div>
         </section>
 
-        <section id="refleks" class="reflex-section py-16 sm:py-24">
-            <div class="mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 px-4 sm:px-6 lg:grid-cols-12 lg:gap-16 lg:px-8">
-                <div class="lg:col-span-5">
-                    <span class="section-label">Tes Ketangkasan</span>
-                    <h2 class="section-heading mt-2 text-5xl font-extrabold leading-none text-gray-900 sm:text-6xl">Uji Refleks Pendekar</h2>
+        <section id="skor" class="score-section py-16 sm:py-24">
+            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <div class="section-intro mb-8">
+                    <span class="section-label">Arena Pertandingan</span>
+                    <h2 class="section-heading font-extrabold text-gray-900">Pro Score Silat</h2>
                     <div class="section-rule my-4"></div>
-                    <p class="mt-4 max-w-md text-sm leading-relaxed text-gray-600 sm:text-base">Atur fokusmu. Tekan arena begitu sinyal berubah kuning. Jangan terpancing sebelum waktunya.</p>
-                    <div class="reflex-best" aria-label="Rekor refleks pribadi">
-                        <span class="reflex-best-icon" aria-hidden="true"><i class="fa-solid fa-stopwatch"></i></span>
-                        <div>
-                            <p class="text-[10px] font-extrabold uppercase tracking-widest text-gray-500">Rekor Terbaik</p>
-                            <p id="reflex-best" class="reflex-best-value">-- ms</p>
-                        </div>
+                    <p class="max-w-2xl text-sm leading-relaxed text-gray-600 sm:text-base">Papan skor dua sudut untuk latihan dan pertandingan. Masukkan nama pesilat, catat teknik, dan koreksi keputusan kapan saja.</p>
+                </div>
+
+                <p id="score-monitor-banner" class="score-monitor-banner" hidden>MODE MONITOR SERVER · Skor pertandingan ini diperbarui langsung dari semua perangkat yang terhubung.</p>
+                <div class="score-room-panel">
+                    <div>
+                        <p id="score-room-status" class="score-room-status" role="status" aria-live="polite">Mode lokal</p>
+                        <p id="score-room-detail" class="score-room-detail">Buat atau gabung room untuk sinkron antar-HP.</p>
+                    </div>
+                    <div id="score-room-actions" class="score-room-actions">
+                        <button id="score-room-create" class="score-room-button" type="button">Buat room</button>
+                        <input id="score-room-code" class="score-room-code" type="text" maxlength="12" placeholder="KODE ROOM" aria-label="Kode room pertandingan" autocomplete="off">
+                        <button id="score-room-join" class="score-room-button" type="button">Gabung</button>
+                        <button id="score-room-share" class="score-room-button" type="button" disabled>Link pemain</button>
+                        <button id="score-monitor-share" class="score-room-button" type="button" disabled>Link monitor server</button>
                     </div>
                 </div>
-                <div class="lg:col-span-7">
-                    <button id="reflex-pad" class="reflex-pad" type="button" data-state="idle" aria-describedby="reflex-result">
-                        <span class="reflex-signal" aria-hidden="true"><i class="fa-solid fa-bolt"></i></span>
-                        <span id="reflex-prompt" class="reflex-prompt">SENTUH UNTUK MULAI</span>
-                        <span id="reflex-subprompt" class="reflex-subprompt">Tunggu sinyal. Tekan secepat mungkin saat arena menyala.</span>
-                    </button>
-                    <p id="reflex-result" class="reflex-result" role="status" aria-live="polite">Rekor tersimpan hanya di perangkat ini.</p>
+
+                <div class="score-toolbar">
+                    <label class="score-penalty-control" for="score-penalty-value">
+                        <span><i class="fa-solid fa-triangle-exclamation mr-1" aria-hidden="true"></i> Pelanggaran</span>
+                        <select id="score-penalty-value">
+                            <option value="1">-1 poin</option>
+                            <option value="2">-2 poin</option>
+                            <option value="3">-3 poin</option>
+                            <option value="5">-5 poin</option>
+                            <option value="10">-10 poin</option>
+                            <option value="dq">Diskualifikasi</option>
+                        </select>
+                    </label>
+                    <div class="score-toolbar-actions">
+                        <button id="score-undo" class="score-utility-button" type="button" disabled><i class="fa-solid fa-rotate-left mr-1"></i> Undo terakhir</button>
+                        <button id="score-reset" class="score-utility-button" type="button"><i class="fa-solid fa-arrow-rotate-left mr-1"></i> Reset pertandingan</button>
+                    </div>
                 </div>
+
+                <div class="score-grid">
+                    <article class="score-card" data-corner="red" aria-label="Skor sudut merah">
+                        <div class="score-card-heading"><span>Sudut Merah</span><i class="fa-solid fa-shield-halved" aria-hidden="true"></i></div>
+                        <label class="score-name-label" for="score-red-name">Nama pesilat</label>
+                        <input id="score-red-name" class="score-name-input" type="text" maxlength="40" value="Pesilat Merah" autocomplete="off">
+                        <p id="score-red-total" class="score-total" aria-live="polite">0</p>
+                        <p id="score-red-state" class="score-card-state">SIAP</p>
+                        <div class="score-action-grid">
+                            <button class="score-action-button" type="button" data-score-team="red" data-score-points="1" data-score-label="Pukulan"><span><i class="fa-solid fa-hand-fist mr-1"></i> Pukulan</span><span>+1</span></button>
+                            <button class="score-action-button" type="button" data-score-team="red" data-score-points="2" data-score-label="Tendangan"><span><i class="fa-solid fa-person-walking-arrow-right mr-1"></i> Tendangan</span><span>+2</span></button>
+                            <button class="score-action-button" type="button" data-score-team="red" data-score-points="3" data-score-label="Bantingan"><span><i class="fa-solid fa-arrow-down mr-1"></i> Bantingan</span><span>+3</span></button>
+                            <button class="score-action-button" type="button" data-score-team="red" data-action="penalty" data-score-label="Pelanggaran"><span><i class="fa-solid fa-triangle-exclamation mr-1"></i> Pelanggaran</span><span data-penalty-label>-1</span></button>
+                        </div>
+                    </article>
+
+                    <article class="score-card" data-corner="blue" aria-label="Skor sudut biru">
+                        <div class="score-card-heading"><span>Sudut Biru</span><i class="fa-solid fa-shield-halved" aria-hidden="true"></i></div>
+                        <label class="score-name-label" for="score-blue-name">Nama pesilat</label>
+                        <input id="score-blue-name" class="score-name-input" type="text" maxlength="40" value="Pesilat Biru" autocomplete="off">
+                        <p id="score-blue-total" class="score-total" aria-live="polite">0</p>
+                        <p id="score-blue-state" class="score-card-state">SIAP</p>
+                        <div class="score-action-grid">
+                            <button class="score-action-button" type="button" data-score-team="blue" data-score-points="1" data-score-label="Pukulan"><span><i class="fa-solid fa-hand-fist mr-1"></i> Pukulan</span><span>+1</span></button>
+                            <button class="score-action-button" type="button" data-score-team="blue" data-score-points="2" data-score-label="Tendangan"><span><i class="fa-solid fa-person-walking-arrow-right mr-1"></i> Tendangan</span><span>+2</span></button>
+                            <button class="score-action-button" type="button" data-score-team="blue" data-score-points="3" data-score-label="Bantingan"><span><i class="fa-solid fa-arrow-down mr-1"></i> Bantingan</span><span>+3</span></button>
+                            <button class="score-action-button" type="button" data-score-team="blue" data-action="penalty" data-score-label="Pelanggaran"><span><i class="fa-solid fa-triangle-exclamation mr-1"></i> Pelanggaran</span><span data-penalty-label>-1</span></button>
+                        </div>
+                    </article>
+                </div>
+
+                <p id="score-match-status" class="score-match-status" role="status" aria-live="polite"></p>
+                <div class="score-log">
+                    <div><p class="score-log-title">Aksi Terakhir</p><p id="score-last-event" class="score-log-last" role="status" aria-live="polite">Belum ada poin dicatat.</p></div>
+                    <ol id="score-history" class="score-history" aria-label="Riwayat skor"></ol>
+                </div>
+                <p class="score-note">Pukulan +1 · Tendangan +2 · Bantingan +3 · Pelanggaran sesuai pilihan. Tanpa room, skor hanya tersimpan di browser ini.</p>
             </div>
         </section>
 
@@ -756,78 +849,134 @@
         </div>
     </footer>
 
+    <!-- FIREBASE SYNC -->
+    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-database-compat.js"></script>
+    <script src="firebase-config.js"></script>
     <!-- SCRIPT MOBILE NAV TOGGLE -->
     <script>
-        var reflexPad = document.getElementById('reflex-pad');
-        var reflexPrompt = document.getElementById('reflex-prompt');
-        var reflexSubprompt = document.getElementById('reflex-subprompt');
-        var reflexResult = document.getElementById('reflex-result');
-        var reflexBest = document.getElementById('reflex-best');
-        var reflexState = 'idle';
-        var reflexTimer;
-        var reflexStartedAt = 0;
-        var reflexBestMs = 0;
+        var scoreStorageKey = 'tapakSuciProScoreV1';
+        var scoreData = { names: ['Pesilat Merah', 'Pesilat Biru'], scores: [0, 0], disqualified: [false, false], history: [] };
+        var scoreHistoryList = document.getElementById('score-history');
+        var scoreUndoButton = document.getElementById('score-undo');
+        var scoreLastEvent = document.getElementById('score-last-event');
+        var scorePenaltySelect = document.getElementById('score-penalty-value');
 
         try {
-            reflexBestMs = Number(localStorage.getItem('tapakSuciReflexBest')) || 0;
-        } catch (error) {
-            reflexBestMs = 0;
-        }
-        if (reflexBestMs) {
-            reflexBest.textContent = reflexBestMs + ' ms';
-        }
-
-        function setReflexState(state, prompt, subprompt) {
-            reflexState = state;
-            reflexPad.dataset.state = state;
-            reflexPrompt.textContent = prompt;
-            reflexSubprompt.textContent = subprompt;
-        }
-
-        function startReflexTest() {
-            window.clearTimeout(reflexTimer);
-            setReflexState('waiting', 'TUNGGU SINYAL...', 'Fokus. Arena akan menyala dalam waktu acak.');
-            reflexResult.textContent = 'Jangan tekan dulu.';
-            reflexTimer = window.setTimeout(function() {
-                setReflexState('ready', 'TEKAN SEKARANG!', 'Sinyal aktif. Ketuk arena!');
-                reflexStartedAt = performance.now();
-            }, 1400 + Math.random() * 2600);
-        }
-
-        reflexPad.addEventListener('click', function() {
-            if (reflexState === 'idle' || reflexState === 'result' || reflexState === 'false-start') {
-                startReflexTest();
-                return;
-            }
-
-            if (reflexState === 'waiting') {
-                window.clearTimeout(reflexTimer);
-                setReflexState('false-start', 'TERLALU CEPAT!', 'Fokus lagi, lalu sentuh untuk mencoba ulang.');
-                reflexResult.textContent = 'Sinyal belum aktif. Coba sekali lagi.';
-                return;
-            }
-
-            if (reflexState === 'ready') {
-                var elapsed = Math.round(performance.now() - reflexStartedAt);
-                var rank = elapsed < 220 ? 'REFLEKS KILAT' : elapsed < 320 ? 'REAKSI TAJAM' : 'TERUS BERLATIH';
-                setReflexState('result', elapsed + ' ms', rank + ' · Sentuh untuk tanding ulang.');
-                reflexResult.textContent = 'Catatan waktu: ' + elapsed + ' milidetik. ' + rank + '.';
-                if (!reflexBestMs || elapsed < reflexBestMs) {
-                    reflexBestMs = elapsed;
-                    reflexBest.textContent = elapsed + ' ms';
-                    try {
-                        localStorage.setItem('tapakSuciReflexBest', String(elapsed));
-                    } catch (error) {
-                        reflexResult.textContent += ' Rekor sesi ini belum bisa disimpan di browser.';
-                    }
+            var savedScoreData = JSON.parse(localStorage.getItem(scoreStorageKey));
+            if (savedScoreData) {
+                if (Array.isArray(savedScoreData.names)) {
+                    scoreData.names = [String(savedScoreData.names[0] || 'Pesilat Merah'), String(savedScoreData.names[1] || 'Pesilat Biru')];
                 }
+                if (Array.isArray(savedScoreData.scores)) {
+                    scoreData.scores = savedScoreData.scores.slice(0, 2).map(function(value) { return Number.parseInt(value, 10) || 0; });
+                    while (scoreData.scores.length < 2) scoreData.scores.push(0);
+                }
+                if (Array.isArray(savedScoreData.disqualified)) {
+                    scoreData.disqualified = [Boolean(savedScoreData.disqualified[0]), Boolean(savedScoreData.disqualified[1])];
+                }
+                scoreData.history = Array.isArray(savedScoreData.history) ? savedScoreData.history.slice(-30) : [];
             }
+        } catch (error) {
+            scoreData.history = [];
+        }
+
+        function saveScoreData() {
+            try {
+                localStorage.setItem(scoreStorageKey, JSON.stringify(scoreData));
+            } catch (error) {
+                scoreLastEvent.textContent = 'Penyimpanan browser tidak tersedia; skor hanya tersimpan selama halaman terbuka.';
+            }
+        }
+
+        function renderScoreboard() {
+            document.getElementById('score-red-name').value = scoreData.names[0];
+            document.getElementById('score-blue-name').value = scoreData.names[1];
+            document.getElementById('score-red-total').textContent = scoreData.scores[0];
+            document.getElementById('score-blue-total').textContent = scoreData.scores[1];
+            document.getElementById('score-red-state').textContent = scoreData.disqualified[0] ? 'DISKUALIFIKASI' : scoreData.disqualified[1] ? 'MENANG · LAWAN DQ' : 'SIAP';
+            document.getElementById('score-blue-state').textContent = scoreData.disqualified[1] ? 'DISKUALIFIKASI' : scoreData.disqualified[0] ? 'MENANG · LAWAN DQ' : 'SIAP';
+            document.querySelectorAll('.score-card').forEach(function(card) {
+                var team = card.dataset.corner === 'blue' ? 1 : 0;
+                card.dataset.disqualified = String(scoreData.disqualified[team]);
+            });
+            document.querySelectorAll('[data-penalty-label]').forEach(function(label) {
+                label.textContent = scorePenaltySelect.value === 'dq' ? 'DQ' : '-' + scorePenaltySelect.value;
+            });
+            document.querySelectorAll('[data-score-team]').forEach(function(button) {
+                button.disabled = scoreData.disqualified[0] || scoreData.disqualified[1];
+            });
+            var winner = scoreData.disqualified[0] ? scoreData.names[1] : scoreData.disqualified[1] ? scoreData.names[0] : '';
+            document.getElementById('score-match-status').textContent = winner ? winner + ' menang · lawan didiskualifikasi' : '';
+            scoreUndoButton.disabled = scoreData.history.length === 0;
+            scoreHistoryList.replaceChildren();
+            scoreData.history.slice(-5).reverse().forEach(function(item) {
+                var entry = document.createElement('li');
+                var delta = item.delta > 0 ? '+' + item.delta : String(item.delta);
+                entry.textContent = item.disqualification ? item.name + ' · DISKUALIFIKASI' : item.name + ' · ' + item.label + ' ' + delta + ' = ' + item.score;
+                scoreHistoryList.appendChild(entry);
+            });
+            scoreLastEvent.textContent = scoreData.history.length ? scoreHistoryList.firstElementChild.textContent : 'Belum ada poin dicatat.';
+            if (window.scoreSync) window.scoreSync.applyMode();
+        }
+
+        document.querySelectorAll('[data-score-team]').forEach(function(button) {
+            button.addEventListener('click', function() {
+                var team = button.dataset.scoreTeam === 'blue' ? 1 : 0;
+                var isPenalty = button.dataset.action === 'penalty';
+                if (scoreData.disqualified[0] || scoreData.disqualified[1]) return;
+                var isDisqualification = isPenalty && scorePenaltySelect.value === 'dq';
+                var delta = isPenalty ? isDisqualification ? 0 : -Number.parseInt(scorePenaltySelect.value, 10) : Number.parseInt(button.dataset.scorePoints, 10);
+                var previous = scoreData.scores[team];
+                var next = previous + delta;
+                var action = isDisqualification ? 'Diskualifikasi' : button.dataset.scoreLabel;
+                if (window.scoreSync && window.scoreSync.apply(team, action, delta, isDisqualification)) return;
+                scoreData.scores[team] = next;
+                if (isDisqualification) scoreData.disqualified[team] = true;
+                scoreData.history.push({ team: team, name: scoreData.names[team], label: action, delta: next - previous, previous: previous, score: next, disqualification: isDisqualification });
+                scoreData.history = scoreData.history.slice(-30);
+                renderScoreboard();
+                saveScoreData();
+            });
         });
+
+        ['red', 'blue'].forEach(function(corner, index) {
+            document.getElementById('score-' + corner + '-name').addEventListener('input', function(event) {
+                scoreData.names[index] = event.target.value.slice(0, 40);
+                if (!window.scoreSync || !window.scoreSync.updateName(index, scoreData.names[index])) saveScoreData();
+            });
+        });
+
+        scorePenaltySelect.addEventListener('change', renderScoreboard);
+
+        scoreUndoButton.addEventListener('click', function() {
+            if (window.scoreSync && window.scoreSync.undo()) return;
+            var lastAction = scoreData.history.pop();
+            if (!lastAction) return;
+            scoreData.scores[lastAction.team] = lastAction.previous;
+            if (lastAction.disqualification) scoreData.disqualified[lastAction.team] = false;
+            renderScoreboard();
+            saveScoreData();
+        });
+
+        document.getElementById('score-reset').addEventListener('click', function() {
+            if (!window.confirm('Reset skor dan riwayat pertandingan?')) return;
+            if (window.scoreSync && window.scoreSync.reset()) return;
+            scoreData.scores = [0, 0];
+            scoreData.disqualified = [false, false];
+            scoreData.history = [];
+            renderScoreboard();
+            saveScoreData();
+        });
+
+        renderScoreboard();
 
         document.getElementById('mobile-menu-btn').addEventListener('click', function() {
             var menu = document.getElementById('mobile-menu');
             menu.classList.toggle('hidden');
         });
     </script>
+    <script src="score-sync.js"></script>
 </body>
 </html>
