@@ -7,7 +7,9 @@
     var roomReference = null;
     var roomListener = null;
     var roomCode = '';
-    var monitorMode = new URLSearchParams(window.location.search).get('mode') === 'monitor';
+    var initialParams = new URLSearchParams(window.location.search);
+    var monitorMode = initialParams.get('mode') === 'monitor';
+    var playerMode = initialParams.get('mode') === 'player';
     var roomStatus = document.getElementById('score-room-status');
     var roomDetail = document.getElementById('score-room-detail');
     var roomCodeInput = document.getElementById('score-room-code');
@@ -15,7 +17,7 @@
     var monitorShareButton = document.getElementById('score-monitor-share');
     var nameTimers = [null, null];
 
-    document.body.dataset.scoreMode = monitorMode ? 'monitor' : 'controller';
+    document.body.dataset.scoreMode = monitorMode ? 'monitor' : playerMode ? 'player' : 'controller';
 
     function setRoomStatus(message, state) {
         roomStatus.textContent = message;
@@ -38,6 +40,7 @@
         var url = new URL(window.location.href);
         url.searchParams.set('room', code);
         if (monitorMode) url.searchParams.set('mode', 'monitor');
+        else if (playerMode) url.searchParams.set('mode', 'player');
         else url.searchParams.delete('mode');
         url.hash = 'skor';
         window.history.replaceState({}, '', url.toString());
@@ -108,7 +111,7 @@
         var url = new URL(window.location.href);
         url.searchParams.set('room', roomCode);
         if (monitor) url.searchParams.set('mode', 'monitor');
-        else url.searchParams.delete('mode');
+        else url.searchParams.set('mode', 'player');
         url.hash = 'skor';
         if (!navigator.clipboard) {
             roomCodeInput.value = url.toString();

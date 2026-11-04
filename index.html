@@ -186,6 +186,16 @@
         .score-room-button:hover:not(:disabled) { background: #111513; }
         .score-room-button:disabled { cursor: not-allowed; opacity: .4; }
         .score-monitor-banner { margin-bottom: 1rem; border-left: 4px solid #28618b; background: #eaf2f8; padding: .75rem 1rem; color: #214663; font-size: .75rem; font-weight: 800; }
+        body[data-score-mode="player"] > header,
+        body[data-score-mode="monitor"] > header,
+        body[data-score-mode="player"] > main > section:not(#skor),
+        body[data-score-mode="monitor"] > main > section:not(#skor),
+        body[data-score-mode="player"] > footer,
+        body[data-score-mode="monitor"] > footer { display: none !important; }
+        body[data-score-mode="player"] #skor,
+        body[data-score-mode="monitor"] #skor { display: flex; min-height: 100vh; align-items: center; padding-top: 2rem; padding-bottom: 2rem; }
+        body[data-score-mode="player"] #skor > div,
+        body[data-score-mode="monitor"] #skor > div { width: 100%; }
         body[data-score-mode="monitor"] .score-room-actions,
         body[data-score-mode="monitor"] .score-toolbar-actions,
         body[data-score-mode="monitor"] .score-penalty-control,
