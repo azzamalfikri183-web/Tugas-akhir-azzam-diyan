@@ -139,14 +139,31 @@
         #program .grid > div:nth-child(2) .program-mark { color: #987500; }
         #program .grid > div:nth-child(3) .program-mark { color: #287452; }
         .program-focus { margin-top: 1.5rem; border-top: 1px solid #e4e6e3; padding-top: 1rem; color: #636b68; font-size: .68rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+        .reflex-section { background: #f0f3f0; }
+        .reflex-best { display: flex; align-items: center; gap: 1rem; margin-top: 2rem; border-top: 1px solid #d5dbd7; padding-top: 1.25rem; }
+        .reflex-best-icon { display: grid; width: 3rem; aspect-ratio: 1; place-items: center; background: var(--ts-yellow); color: #202321; }
+        .reflex-best-value { margin-top: .15rem; color: var(--ts-ink); font-family: 'Barlow Condensed', sans-serif; font-size: 2rem; font-weight: 800; line-height: 1; }
+        .reflex-pad { position: relative; display: flex; min-height: 22rem; width: 100%; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; overflow: hidden; border: 1px solid #343a37; border-radius: 8px; background: linear-gradient(145deg, #1a1e1c, #292e2b); color: #fff; cursor: pointer; transition: background .2s ease, color .2s ease, transform .2s ease; }
+        .reflex-pad::before { position: absolute; inset: 0 0 auto; height: 4px; background: var(--ts-yellow); content: ""; }
+        .reflex-pad:hover { transform: translateY(-2px); }
+        .reflex-pad[data-state="waiting"] { background: #551a1f; cursor: wait; }
+        .reflex-pad[data-state="ready"] { background: var(--ts-yellow); color: #1b201d; }
+        .reflex-pad[data-state="result"] { background: #183c2e; }
+        .reflex-pad[data-state="false-start"] { background: #761b20; }
+        .reflex-signal { display: grid; width: 5rem; aspect-ratio: 1; place-items: center; border: 1px solid currentColor; border-radius: 50%; font-size: 1.6rem; }
+        .reflex-pad[data-state="ready"] .reflex-signal { border-color: #1b201d; background: #1b201d; color: var(--ts-yellow); animation: signal-pulse .8s ease-in-out infinite alternate; }
+        .reflex-prompt { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 800; line-height: 1; text-align: center; }
+        .reflex-subprompt { max-width: 24rem; padding: 0 1rem; color: currentColor; font-size: .8rem; line-height: 1.6; opacity: .76; text-align: center; }
+        .reflex-result { min-height: 1.5rem; margin-top: .9rem; color: #525c57; font-size: .8rem; font-weight: 700; text-align: center; }
+        @keyframes signal-pulse { from { transform: scale(1); } to { transform: scale(1.12); } }
         #berita .section-intro { max-width: none; }
         #berita .section-intro + .grid { align-items: stretch; }
         #berita .grid > div:nth-child(-n+2) > div:first-child { height: 22rem; }
         #berita .grid > div:nth-child(n+3) > div:first-child { height: 15rem; }
         #berita .mt-16 { border-top: 1px solid var(--ts-line); padding-top: 2rem; }
         #berita .mt-16 > div:first-child { align-items: center; }
-        #berita figure:first-child { min-height: 30rem; }
-        #berita figure:last-child { min-height: 24rem; margin-top: 3rem; }
+        #berita figure:first-child { min-height: 0; aspect-ratio: 1.15 / 1; }
+        #berita figure:last-child { min-height: 0; aspect-ratio: 1.35 / 1; margin-top: 3rem; }
         #kontak .section-intro { max-width: none; }
         #kontak .grid > div:first-child > div { border-left: 4px solid var(--ts-red); }
         footer { background: linear-gradient(120deg, #191c1b, #261819); }
@@ -161,16 +178,17 @@
             .section-intro { margin-bottom: 2.5rem !important; }
             .history-timeline { grid-template-columns: 1fr; }
             #profil .grid > div:first-child { padding: 1.5rem; }
+            .reflex-pad { min-height: 18rem; }
             #berita .grid > div:nth-child(-n+2) > div:first-child { height: 17rem; }
             #berita .grid > div:nth-child(n+3) > div:first-child { height: 15rem; }
-            #berita figure:first-child { min-height: 22rem; }
-            #berita figure:last-child { min-height: 20rem; margin-top: 0; }
+            #berita figure:first-child, #berita figure:last-child { min-height: 0; aspect-ratio: 4 / 3; margin-top: 0; }
             .hero-backdrop {
                 background: linear-gradient(180deg, rgba(23, 8, 9, .48) 0%, rgba(62, 7, 12, .76) 42%, rgba(23, 8, 9, .94) 100%);
             }
         }
         @media (prefers-reduced-motion: reduce) {
             .hero-content > * { animation: none; }
+            .reflex-pad[data-state="ready"] .reflex-signal { animation: none; }
         }
     </style>
 </head>
@@ -201,6 +219,9 @@
                     </a>
                     <a href="#program" class="whitespace-nowrap px-2 py-2 text-xs font-semibold text-gray-700 hover:text-tsRed hover:bg-red-50 rounded-lg transition-colors lg:px-2.5 lg:text-sm">
                         <i class="fa-solid fa-calendar-check text-tsRed mr-1.5"></i> Program
+                    </a>
+                    <a href="#refleks" class="whitespace-nowrap px-2 py-2 text-xs font-semibold text-gray-700 hover:text-tsRed hover:bg-red-50 rounded-lg transition-colors lg:px-2.5 lg:text-sm">
+                        <i class="fa-solid fa-bolt text-tsRed mr-1.5"></i> Refleks
                     </a>
                     <a href="#berita" class="whitespace-nowrap px-2 py-2 text-xs font-semibold text-gray-700 hover:text-tsRed hover:bg-red-50 rounded-lg transition-colors lg:px-2.5 lg:text-sm">
                         <i class="fa-solid fa-newspaper text-tsRed mr-1.5"></i> Berita & Galeri
@@ -239,6 +260,9 @@
             </a>
             <a href="#program" class="block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:bg-red-50 hover:text-tsRed">
                 <i class="fa-solid fa-calendar-check text-tsRed w-6"></i> Program
+            </a>
+            <a href="#refleks" class="block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:bg-red-50 hover:text-tsRed">
+                <i class="fa-solid fa-bolt text-tsRed w-6"></i> Tes Refleks
             </a>
             <a href="#berita" class="block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:bg-red-50 hover:text-tsRed">
                 <i class="fa-solid fa-newspaper text-tsRed w-6"></i> Berita & Galeri
@@ -456,6 +480,32 @@
 
                 </div>
 
+            </div>
+        </section>
+
+        <section id="refleks" class="reflex-section py-16 sm:py-24">
+            <div class="mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 px-4 sm:px-6 lg:grid-cols-12 lg:gap-16 lg:px-8">
+                <div class="lg:col-span-5">
+                    <span class="section-label">Tes Ketangkasan</span>
+                    <h2 class="section-heading mt-2 text-5xl font-extrabold leading-none text-gray-900 sm:text-6xl">Uji Refleks Pendekar</h2>
+                    <div class="section-rule my-4"></div>
+                    <p class="mt-4 max-w-md text-sm leading-relaxed text-gray-600 sm:text-base">Atur fokusmu. Tekan arena begitu sinyal berubah kuning. Jangan terpancing sebelum waktunya.</p>
+                    <div class="reflex-best" aria-label="Rekor refleks pribadi">
+                        <span class="reflex-best-icon" aria-hidden="true"><i class="fa-solid fa-stopwatch"></i></span>
+                        <div>
+                            <p class="text-[10px] font-extrabold uppercase tracking-widest text-gray-500">Rekor Terbaik</p>
+                            <p id="reflex-best" class="reflex-best-value">-- ms</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:col-span-7">
+                    <button id="reflex-pad" class="reflex-pad" type="button" data-state="idle" aria-describedby="reflex-result">
+                        <span class="reflex-signal" aria-hidden="true"><i class="fa-solid fa-bolt"></i></span>
+                        <span id="reflex-prompt" class="reflex-prompt">SENTUH UNTUK MULAI</span>
+                        <span id="reflex-subprompt" class="reflex-subprompt">Tunggu sinyal. Tekan secepat mungkin saat arena menyala.</span>
+                    </button>
+                    <p id="reflex-result" class="reflex-result" role="status" aria-live="polite">Rekor tersimpan hanya di perangkat ini.</p>
+                </div>
             </div>
         </section>
 
@@ -708,6 +758,72 @@
 
     <!-- SCRIPT MOBILE NAV TOGGLE -->
     <script>
+        var reflexPad = document.getElementById('reflex-pad');
+        var reflexPrompt = document.getElementById('reflex-prompt');
+        var reflexSubprompt = document.getElementById('reflex-subprompt');
+        var reflexResult = document.getElementById('reflex-result');
+        var reflexBest = document.getElementById('reflex-best');
+        var reflexState = 'idle';
+        var reflexTimer;
+        var reflexStartedAt = 0;
+        var reflexBestMs = 0;
+
+        try {
+            reflexBestMs = Number(localStorage.getItem('tapakSuciReflexBest')) || 0;
+        } catch (error) {
+            reflexBestMs = 0;
+        }
+        if (reflexBestMs) {
+            reflexBest.textContent = reflexBestMs + ' ms';
+        }
+
+        function setReflexState(state, prompt, subprompt) {
+            reflexState = state;
+            reflexPad.dataset.state = state;
+            reflexPrompt.textContent = prompt;
+            reflexSubprompt.textContent = subprompt;
+        }
+
+        function startReflexTest() {
+            window.clearTimeout(reflexTimer);
+            setReflexState('waiting', 'TUNGGU SINYAL...', 'Fokus. Arena akan menyala dalam waktu acak.');
+            reflexResult.textContent = 'Jangan tekan dulu.';
+            reflexTimer = window.setTimeout(function() {
+                setReflexState('ready', 'TEKAN SEKARANG!', 'Sinyal aktif. Ketuk arena!');
+                reflexStartedAt = performance.now();
+            }, 1400 + Math.random() * 2600);
+        }
+
+        reflexPad.addEventListener('click', function() {
+            if (reflexState === 'idle' || reflexState === 'result' || reflexState === 'false-start') {
+                startReflexTest();
+                return;
+            }
+
+            if (reflexState === 'waiting') {
+                window.clearTimeout(reflexTimer);
+                setReflexState('false-start', 'TERLALU CEPAT!', 'Fokus lagi, lalu sentuh untuk mencoba ulang.');
+                reflexResult.textContent = 'Sinyal belum aktif. Coba sekali lagi.';
+                return;
+            }
+
+            if (reflexState === 'ready') {
+                var elapsed = Math.round(performance.now() - reflexStartedAt);
+                var rank = elapsed < 220 ? 'REFLEKS KILAT' : elapsed < 320 ? 'REAKSI TAJAM' : 'TERUS BERLATIH';
+                setReflexState('result', elapsed + ' ms', rank + ' · Sentuh untuk tanding ulang.');
+                reflexResult.textContent = 'Catatan waktu: ' + elapsed + ' milidetik. ' + rank + '.';
+                if (!reflexBestMs || elapsed < reflexBestMs) {
+                    reflexBestMs = elapsed;
+                    reflexBest.textContent = elapsed + ' ms';
+                    try {
+                        localStorage.setItem('tapakSuciReflexBest', String(elapsed));
+                    } catch (error) {
+                        reflexResult.textContent += ' Rekor sesi ini belum bisa disimpan di browser.';
+                    }
+                }
+            }
+        });
+
         document.getElementById('mobile-menu-btn').addEventListener('click', function() {
             var menu = document.getElementById('mobile-menu');
             menu.classList.toggle('hidden');
